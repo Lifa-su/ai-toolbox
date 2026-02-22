@@ -6,8 +6,8 @@ export default function Home() {
   const tools = [
     { href: '/rewrite', icon: '✍️', title: 'AI文本改写', desc: '智能改写润色你的文本，支持中英文，让表达更专业流畅' },
     { href: '/summary', icon: '📝', title: 'AI摘要生成', desc: '粘贴长文一键生成摘要，快速提取核心内容' },
-    { href: '#', icon: '🌐', title: 'AI翻译（即将上线）', desc: '支持中英日韩互译，AI驱动更自然的翻译结果' },
-    { href: '#', icon: '📱', title: 'MD转公众号（即将上线）', desc: 'Markdown一键转换为公众号排版格式' },
+    { href: '/translate', icon: '🌐', title: 'AI翻译', desc: '支持中英日韩互译，AI驱动更自然的翻译结果' },
+    { href: '/markdown', icon: '📱', title: 'MD转公众号', desc: 'Markdown一键转换为微信公众号排版格式' },
   ]
 
   return (

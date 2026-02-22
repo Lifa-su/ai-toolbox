@@ -12,7 +12,7 @@
 [![Issues](https://img.shields.io/github/issues/Lifa-su/ai-toolbox?style=flat-square)](https://github.com/Lifa-su/ai-toolbox/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/Lifa-su/ai-toolbox?style=flat-square)](https://github.com/Lifa-su/ai-toolbox/commits/main)
 
-[🎯 Live Demo](https://lifa-su.github.io/ai-toolbox) · [🐛 Report Bug](https://github.com/Lifa-su/ai-toolbox/issues) · [💡 Request Feature](https://github.com/Lifa-su/ai-toolbox/issues)
+[🎯 Live Demo](https://ai-toolbox.vercel.app) · [🐛 Report Bug](https://github.com/Lifa-su/ai-toolbox/issues) · [💡 Request Feature](https://github.com/Lifa-su/ai-toolbox/issues)
 
 </div>
 
@@ -27,8 +27,8 @@
 |------|-------------|--------|
 | ✍️ **AI Rewrite & Polish** | Intelligently optimize Chinese & English text expressions | ✅ Available |
 | 📝 **AI Summary** | Extract key points from long articles in one click | ✅ Available |
-| 🌐 **AI Translation** | Accurate cross-language translation | 🚧 Coming Soon |
-| 📱 **Markdown → WeChat** | Convert Markdown to WeChat article formatting | 🚧 Coming Soon |
+| 🌐 **AI Translation** | Chinese / English / Japanese / Korean cross-language translation | ✅ Available |
+| 📱 **Markdown → WeChat** | Convert Markdown to WeChat article formatting with inline styles | ✅ Available |
 
 > 💡 All tools are powered by [DeepSeek](https://deepseek.com) — fast, accurate, and cost-effective.
 
@@ -61,7 +61,7 @@ Open [http://localhost:3000](http://localhost:3000) and you're good to go! 🎉
 
 ## 🎯 Demo
 
-👉 **Try it now:** [https://lifa-su.github.io/ai-toolbox](https://lifa-su.github.io/ai-toolbox)
+👉 **Try it now:** [https://ai-toolbox.vercel.app](https://ai-toolbox.vercel.app)
 
 No sign-up required. Just open and use.
 
@@ -73,6 +73,7 @@ No sign-up required. Just open and use.
 | [React 18](https://react.dev/) | UI library |
 | [TailwindCSS](https://tailwindcss.com/) | Utility-first CSS |
 | [DeepSeek API](https://platform.deepseek.com/) | AI model backend |
+| [Vercel](https://vercel.com/) | Deployment platform |
 
 ## 📦 Project Structure
 
@@ -80,9 +81,11 @@ No sign-up required. Just open and use.
 ai-toolbox/
 ├── src/
 │   ├── app/
-│   │   ├── api/          # API routes (rewrite, summary)
+│   │   ├── api/          # API routes (rewrite, summary, translate, markdown)
 │   │   ├── rewrite/      # AI rewrite page
 │   │   ├── summary/      # AI summary page
+│   │   ├── translate/    # AI translation page
+│   │   ├── markdown/     # Markdown to WeChat page
 │   │   ├── layout.js     # Root layout
 │   │   ├── page.js       # Home page
 │   │   └── globals.css   # Global styles
@@ -90,7 +93,9 @@ ai-toolbox/
 │       ├── Header.js
 │       ├── Footer.js
 │       ├── ToolCard.js
-│       └── TextProcessor.js
+│       ├── TextProcessor.js
+│       ├── TranslateProcessor.js
+│       └── MarkdownProcessor.js
 ├── .env.local.example    # Environment variable template
 ├── next.config.js
 ├── tailwind.config.js
