@@ -19,18 +19,27 @@ export default function MarkdownProcessor() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: input }),
       })
-      const data = await res.json()
+      let data
+      try {
+        data = await res.json()
+      } catch {
+        throw new Error('AI服务暂时不可用，请稍后再试')
+      }
       if (!res.ok) throw new Error(data.error || '请求失败')
       setHtml(data.result)
     } catch (e) {
-      setError(e.message)
+      setError(e.message || '请求失败，请稍后再试')
     } finally {
       setLoading(false)
     }
   }
 
-  const copyHtml = () => {
-    navigator.clipboard.writeText(html)
+  const copyHtml = async () => {
+    try {
+      await navigator.clipboard.writeText(html)
+    } catch {
+      // clipboard access denied
+    }
   }
 
   const copyRich = async () => {
@@ -40,8 +49,11 @@ export default function MarkdownProcessor() {
         new ClipboardItem({ 'text/html': blob }),
       ])
     } catch {
-      // Fallback: copy as plain HTML
-      navigator.clipboard.writeText(html)
+      try {
+        await navigator.clipboard.writeText(html)
+      } catch {
+        // clipboard access denied
+      }
     }
   }
 

@@ -18,18 +18,27 @@ export default function TextProcessor({ title, placeholder, apiPath, buttonText 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: input }),
       })
-      const data = await res.json()
+      let data
+      try {
+        data = await res.json()
+      } catch {
+        throw new Error('AI服务暂时不可用，请稍后再试')
+      }
       if (!res.ok) throw new Error(data.error || '请求失败')
       setOutput(data.result)
     } catch (e) {
-      setError(e.message)
+      setError(e.message || '请求失败，请稍后再试')
     } finally {
       setLoading(false)
     }
   }
 
-  const copyOutput = () => {
-    navigator.clipboard.writeText(output)
+  const copyOutput = async () => {
+    try {
+      await navigator.clipboard.writeText(output)
+    } catch {
+      // clipboard access denied
+    }
   }
 
   return (
